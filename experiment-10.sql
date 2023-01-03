@@ -28,7 +28,7 @@ after update of sid on sailors
 for each row
 begin
 if(:new.sid < 80) then
-raise_application_error(-20017, 'Cant update');
+raise_application_error(-20017, 'Can''t update');
 end if;
 end;
 /
@@ -48,7 +48,7 @@ delete on sailors
 for each row
 begin
 if :old.sid = 22 then
-raise_application_error(-20019, 'you can not delete this row');
+raise_application_error(-20019, 'you can''t delete this row');
 end if;
 end;
 /
