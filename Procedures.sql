@@ -34,4 +34,4 @@ end;
 /
 
 -- execute procedure
-execute p_sailors(29, 'Ajit', '19');
+execute p_sailors(29, 'Ajit', 19);
