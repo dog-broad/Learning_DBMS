@@ -36,7 +36,7 @@
 * 
 */
 
--- Find the names of sailors who ave reservedred boat (Nested Query)
+-- Find the names of sailors who have reserved red boat (Nested Query)
 select s.sname from sailors s where s.sid in(
     select r.sid from reserves r where r.bid in(
         select b.bid from boats b where b.color = 'Red'
@@ -46,4 +46,11 @@ select s.sname from sailors s where s.sid in(
 -- Find the names of sailors who have reserved boat number 103 (Corelated Nested Quesry)
 select s.sname from sailors s where exists(
     select * from reserves r where r.bid=103 and r.sid = s.sid
+);
+
+-- Finding names of sailors who have reserved all boats (Using Not Exists)
+select s.sid, s.sname from sailors s where not exists(
+    select b.bid from boats b where not exists(
+        select r.bid from reserves r where r.bid = b.bid and r.sid = s.sid
+    )
 );

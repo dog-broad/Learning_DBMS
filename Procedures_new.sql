@@ -20,3 +20,19 @@ end loop;
 close c1;
 end;
 /
+
+declare
+v_sname sailors.sname%type;
+v_age sailors.age%type;
+cursor c2 is
+select sname,age from sailors;
+begin
+open c2;
+loop
+fetch c2 into v_sname,v_age;
+exit when c2%rowcount>3;
+dbms_output.put_line(v_sname||' '||v_age);
+end loop;
+close c2;
+end;
+/
